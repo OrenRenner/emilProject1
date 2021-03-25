@@ -99,10 +99,124 @@
 # print(a)
 # print(r)
 
-a = "Привет как дела Все нормально спасибо как у тебя Да тоже нормально"
+#a = "Привет как дела Все нормально спасибо как у тебя Да тоже нормально"
 # with open("in.txt", "r") as file:
 #     lines = file.readlines()
 #     #print(lines)
 
-lines = a.split(" ")
-print(len(lines))
+# lines = a.split(" ")
+# print(len(lines))
+
+# a = int(input())
+# b = int(input())
+#
+# if a < 0:
+#     a *= -1
+#
+# if b < 0:
+#     b *= -1
+#
+# print((a + b) * 0.5)
+
+
+# year = int(input())
+#
+# if -2000 <= year <= 2000:
+#     if year % 4 == 0:
+#         print("366 дней в", year, "году")
+#     else:
+#         print("365 дней в", year, "году")
+
+# str_tmp = ""
+# #527545454545454544554
+# while str_tmp != "Yes":
+#     str_tmp = input()
+#     print(str_tmp)
+
+# number = 123456787654321234567890987654567898765456543
+# summ = 0
+# while number > 0:
+#     summ += number % 10
+#     number //= 10
+
+# summ = 0.0
+#
+# for i in range(-10, 21):
+#     if i == 0:
+#         continue
+#     summ += 1 / i
+#
+# print(summ)
+
+
+#
+# if A < B:
+#     count = 0
+#     for i in range(B-1, A, -1):
+#         print(i)
+#         count += 1
+#
+#     print(count)
+
+# A = float(input())
+# N = int(input())
+#
+# if N > 0:
+#     for_mul = 1.0
+#     for i in range(N):
+#         for_mul *= A
+#     print(for_mul)
+
+# n = int(input())
+# res = 0
+#
+# for i in range(1, n+1):
+#     res += i
+#
+# if res % 2 == 0:
+#     print("black")
+# else:
+#     print("grimmy")
+
+class Vertex:
+    def __init__(self, value):
+        self.value = value
+        self.edges = []
+
+    def add_edge(self, vertex):
+        if isinstance(vertex, Vertex):
+            self.edges.append(vertex)
+        else:
+            return "Error Type"
+
+    def __str__(self):
+        return str(self.value)
+
+a = Vertex(value=3)
+b = Vertex(value=4)
+a.add_edge(b)
+b.add_edge(a)
+
+c = Vertex(value=7)
+c.add_edge(b)
+b.add_edge(c)
+
+d = Vertex(value=5)
+d.add_edge(b)
+b.add_edge(d)
+
+d.add_edge(c)
+c.add_edge(d)
+
+
+def graph_traversal(item:Vertex, lst:list):
+    for i in item.edges:
+        for j in lst:
+            if i == j:
+                return
+        print(i)
+        lst.append(i)
+        graph_traversal(i, lst)
+
+t = []
+graph_traversal(b, t)

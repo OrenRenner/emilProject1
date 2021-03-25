@@ -109,3 +109,101 @@ import math
 #
 #
 # print(sum_list(lst))
+
+# list_of_words = []
+# count_of_words = {}
+# out_str = ""
+#
+# with open("in.txt", "r") as file:
+#     in_str = file.read()
+#     in_str = in_str.replace(".", "").replace(",", "").replace("!", "").replace("?", "")
+#     in_str = in_str.lower()
+#     list_of_line = in_str.split("\n")
+#
+#     for i in list_of_line:
+#         list_of_words += i.split()
+#
+#     for word in list_of_words:
+#         if word in count_of_words:
+#             count_of_words[word] += 1
+#         else:
+#             count_of_words[word] = 1
+#
+#     for key, value in count_of_words.items():
+#         out_str += str(key) + " - " + str(value) + "\n"
+#         print(str(key) + " - " + str(value))
+#
+# with open("out.txt", "w") as file:
+#     file.write(out_str)
+
+
+
+import math
+#n!
+def factorial(n):
+    f = 1
+    for i in range(1, n+1):
+        f *= i
+    return f
+
+
+# g = math.cos(131)
+# print(g)
+# t = factorial(10)
+# print(t)
+# print(factorial(3))
+# print(factorial(7))
+
+def nod(a, b):
+    i = 1
+    for j in range(1, min(a, b)+1):
+        if a % j == 0 and b % j == 0:
+            i = j
+    return i
+
+
+# g1 = nod(12, 4)
+# g2 = nod(108, 96)
+# print(g1, g2)
+a = 3
+def sum(lst):
+    if isinstance(lst, list):
+        sums = 0
+        for i in lst:
+            sums += i
+        return sums/len(lst)
+    else:
+        return "Ты подал не того типа"
+
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(sum(a))
+#
+# b = [14, 2, -43, 4, 35, 6, 7, 28, 89]
+# print(sum(b))
+#
+# с = 1212
+# print(sum(с))
+
+# lst_int = []
+# char = ''
+#
+# while char != '.':
+#     char = input()
+#     if char != '.':
+#         lst_int.append(int(char))
+#
+# print(sum(lst_int))
+
+
+def area_triangule(a, b):
+    if a > 0 and b > 0:
+        S = a*b/2
+        return S
+    else:
+        return "Заданы неверные стороны"
+
+
+print(area_triangule(-3, 4))
+
+#a, b, S-? S = a*b/2
+a = [1, 2, 3, 4, 5, 6, 7]
