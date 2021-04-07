@@ -112,47 +112,60 @@ import math
 #             self.left_child = item
 
 
-class TreeNode:
-    def __init__(self, data, right=None, left=None):
-        self.data = data
-        self.right = right
-        self.left = left
+# class TreeNode:
+#     def __init__(self, data, right=None, left=None):
+#         assert not isinstance(data, int) \
+#                or not isinstance(right, TreeNode) \
+#                or not isinstance(left, TreeNode)
+#         self.data = data
+#         self.right = right
+#         self.left = left
+#
+#     def add_right_child(self, right_child):
+#         assert not isinstance(right_child, TreeNode)
+#         self.right = right_child
+#
+#     def add_left_child(self, left_child):
+#         assert not isinstance(left_child, TreeNode)
+#         self.left = left_child
+#
+#     def __str__(self):
+#         return str(self.data)
+#
+#
+# def go_around(tree: TreeNode):
+#     if tree.right is None and tree.left is None:
+#         print(tree.data)
+#         return None
+#
+#     print(tree.data)
+#     if tree.right is not None:
+#         go_around(tree.right)
+#     if tree.left is not None:
+#         go_around(tree.left)
+#
+#
+# a = TreeNode(data=1)
+#
+# a.right = TreeNode(data=3)
+# a.left = TreeNode(data=2)
+#
+# a.left.right = TreeNode(data=6)
+# a.left.left = TreeNode(data=7)
+#
+# a.right.right = TreeNode(data=4)
+# a.right.left = TreeNode(data=5)
+#
+# a.left.right.left = TreeNode(data=8)
+#
+# a.right.left.right = TreeNode(data=9)
+#
+# go_around(a)
 
-    def add_right_child(self, right_child):
-        self.right = right_child
 
-    def add_left_child(self, left_child):
-        self.left = left_child
-
-    def __str__(self):
-        return str(self.data)
+def sum(a:int, b:int):
+    assert isinstance(a, int) and isinstance(b, int)
+    return a + b
 
 
-def go_around(tree: TreeNode):
-    if tree.right is None and tree.left is None:
-        print(tree.data)
-        return None
-
-    print(tree.data)
-    if tree.right is not None:
-        go_around(tree.right)
-    if tree.left is not None:
-        go_around(tree.left)
-
-
-a = TreeNode(data=1)
-
-a.right = TreeNode(data=3)
-a.left = TreeNode(data=2)
-
-a.left.right = TreeNode(data=6)
-a.left.left = TreeNode(data=7)
-
-a.right.right = TreeNode(data=4)
-a.right.left = TreeNode(data=5)
-
-a.left.right.left = TreeNode(data=8)
-
-a.right.left.right = TreeNode(data=9)
-
-go_around(a)
+print(sum(3, 123))

@@ -218,5 +218,6 @@ def graph_traversal(item:Vertex, lst:list):
         lst.append(i)
         graph_traversal(i, lst)
 
+
 t = []
-graph_traversal(b, t)
+graph_traversal(a, t)
