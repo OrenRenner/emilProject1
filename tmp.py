@@ -177,47 +177,161 @@
 #     print("black")
 # else:
 #     print("grimmy")
+#
+# class Vertex:
+#     def __init__(self, value):
+#         self.value = value
+#         self.edges = []
+#
+#     def add_edge(self, vertex):
+#         if isinstance(vertex, Vertex):
+#             self.edges.append(vertex)
+#         else:
+#             return "Error Type"
+#
+#     def __str__(self):
+#         return str(self.value)
+#
+# a = Vertex(value=3)
+# b = Vertex(value=4)
+# a.add_edge(b)
+# b.add_edge(a)
+#
+# c = Vertex(value=7)
+# c.add_edge(b)
+# b.add_edge(c)
+#
+# d = Vertex(value=5)
+# d.add_edge(b)
+# b.add_edge(d)
+#
+# d.add_edge(c)
+# c.add_edge(d)
+#
+#
+# def graph_traversal(item:Vertex, lst:list):
+#     for i in item.edges:
+#         for j in lst:
+#             if i == j:
+#                 return
+#         print(i)
+#         lst.append(i)
+#         graph_traversal(i, lst)
+#
+#
+# t = []
+# graph_traversal(a, t)
 
-class Vertex:
-    def __init__(self, value):
-        self.value = value
-        self.edges = []
+class Fraction:
 
-    def add_edge(self, vertex):
-        if isinstance(vertex, Vertex):
-            self.edges.append(vertex)
-        else:
-            return "Error Type"
+    def __init__(self, numerate, denumerate):
+        assert isinstance(numerate, int) and isinstance(denumerate, int) and numerate != 0
+        self.numerate = numerate
+        self.denumerate = denumerate
+        if denumerate < 0:
+            self.numerate *= -1
+            self.denumerate *= -1
 
     def __str__(self):
-        return str(self.value)
+        return str(self.numerate) + "/" + str(self.denumerate)
 
-a = Vertex(value=3)
-b = Vertex(value=4)
-a.add_edge(b)
-b.add_edge(a)
+    def __add__(self, other):
+        if isinstance(other, Fraction):
+            return Fraction(
+                numerate=self.numerate*other.denumerate + self.denumerate*other.numerate,
+                denumerate=self.denumerate*other.denumerate
+            )
+        elif isinstance(other, int):
+            return Fraction(
+                numerate=self.numerate + self.denumerate * other,
+                denumerate=self.denumerate
+            )
+        else:
+            raise TypeError("unsupported operand type(s) for +: 'Fraction' and '" + str(type(other)) + "'")
 
-c = Vertex(value=7)
-c.add_edge(b)
-b.add_edge(c)
+    def __radd__(self, other):
+        if isinstance(other, int):
+            return Fraction(
+                numerate=self.numerate + self.denumerate * other,
+                denumerate=self.denumerate
+            )
+        else:
+            raise TypeError("unsupported operand type(s) for +: 'Fraction' and '" + str(type(other)) + "'")
 
-d = Vertex(value=5)
-d.add_edge(b)
-b.add_edge(d)
+    def __mul__(self, other):
+        if isinstance(other, Fraction):
+            return Fraction(
+                numerate=self.numerate*other.numerate,
+                denumerate=self.denumerate*other.denumerate
+            )
+        elif isinstance(other, int):
+            return Fraction(
+                numerate=self.numerate * other,
+                denumerate=self.denumerate
+            )
+        else:
+            raise TypeError("unsupported operand type(s) for *: 'Fraction' and '" + str(type(other)) + "'")
 
-d.add_edge(c)
-c.add_edge(d)
+    def __rmul__(self, other):
+        if isinstance(other, int):
+            return Fraction(
+                numerate=self.numerate * other,
+                denumerate=self.denumerate
+            )
+        else:
+            raise TypeError("unsupported operand type(s) for *: 'Fraction' and '" + str(type(other)) + "'")
+
+    def __sub__(self, other):
+        if isinstance(other, Fraction):
+            return Fraction(
+                numerate=self.numerate * other.denumerate - self.denumerate * other.numerate,
+                denumerate=self.denumerate * other.denumerate
+            )
+        elif isinstance(other, int):
+            return Fraction(
+                numerate=self.numerate - self.denumerate * other,
+                denumerate=self.denumerate
+            )
+        else:
+            raise TypeError("unsupported operand type(s) for -: 'Fraction' and '" + str(type(other)) + "'")
+
+    def __rsub__(self, other):
+        if isinstance(other, int):
+            return Fraction(
+                numerate=self.numerate - self.denumerate * other,
+                denumerate=self.denumerate
+            )
+        else:
+            raise TypeError("unsupported operand type(s) for -: 'Fraction' and '" + str(type(other)) + "'")
+
+    def __truediv__(self, other):
+        if isinstance(other, Fraction):
+            return Fraction(
+                numerate=self.numerate * other.denumerate,
+                denumerate=self.denumerate * other.numerate
+            )
+        elif isinstance(other, int):
+            return Fraction(
+                numerate=self.numerate,
+                denumerate=self.denumerate * other
+            )
+        else:
+            raise TypeError("unsupported operand type(s) for /: 'Fraction' and '" + str(type(other)) + "'")
+
+    def __rtruediv__(self, other):
+        if isinstance(other, int):
+            return Fraction(
+                numerate=self.numerate,
+                denumerate=self.denumerate * other
+            )
+        else:
+            raise TypeError("unsupported operand type(s) for /: 'Fraction' and '" + str(type(other)) + "'")
+
+    def my_func(self):
+        #Реализовать функцию сокращения
+        pass
 
 
-def graph_traversal(item:Vertex, lst:list):
-    for i in item.edges:
-        for j in lst:
-            if i == j:
-                return
-        print(i)
-        lst.append(i)
-        graph_traversal(i, lst)
-
-
-t = []
-graph_traversal(a, t)
+a = Fraction(numerate=2, denumerate=4)
+b = Fraction(numerate=1, denumerate=3)
+print(a / b)

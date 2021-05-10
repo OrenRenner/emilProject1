@@ -329,16 +329,436 @@ def factorial(n):
     return fact
 
 
-def my_func(a, b, c, d, e, f):
-    assert isinstance(a, int) and isinstance(b, float)
-    if a > 0:
-        s1 = a + b
-        s2 = c + d + e + f
-        return "None"
+def four_oper(a, b):
+    sum = a + b
+    mul = a * b
+    div = a / b
+    sub = a - b
+    return sum, sub, mul, div
+
+#10111213..9899
+
+# num = 10
+#
+# for i in range(11, 100):
+#     num *= 100
+#     num += i
+#
+# print(num)
+
+import random
+
+
+# def f(a, b):
+#     if not (isinstance(a, int) and isinstance(b, int)):
+#         raise TypeError("Ввел не тот тип данных")
+#     return int(a % b == 0 or b % a == 0)
+#
+# print(f(0, 5))
+#
+# class TreeNode:
+#     def __init__(self, data, right=None, left=None, mid_right=None, mid_left=None):
+#         assert not isinstance(data, int) \
+#             or not isinstance(right, TreeNode) \
+#             or not isinstance(left, TreeNode) \
+#             or not isinstance(mid_right, TreeNode) \
+#             or not isinstance(mid_left, TreeNode)
+#         self.data = data
+#         self.right = right
+#         self.left = left
+#         self.mid_left = mid_left
+#         self.mid_right = mid_right
+#
+#     def add_right_child(self, right_child):
+#         assert isinstance(right_child, TreeNode)
+#         self.right = right_child
+#
+#     def add_left_child(self, left_child):
+#         assert isinstance(left_child, TreeNode)
+#         self.left = left_child
+#
+#     def add_mid_right_child(self, mid_right_child):
+#         assert isinstance(mid_right_child, TreeNode)
+#         self.mid_right = mid_right_child
+#
+#     def add_mid_left_child(self, mid_left_child):
+#         assert isinstance(mid_left_child, TreeNode)
+#         self.mid_left = mid_left_child
+#
+#     def __str__(self):
+#         return str(self.data)
+#
+# def go_around(tree: TreeNode):
+#     if tree.left is None and tree.right is None \
+#        and tree.mid_left is None and tree.mid_right is None:
+#         print(tree.data)
+#         return None
+#     print(tree.data)
+#     if tree.left is not None:
+#         go_around(tree.left)
+#     if tree.right is not None:
+#         go_around(tree.right)
+#     if tree.mid_left is not None:
+#         go_around(tree.mid_left)
+#     if tree.mid_right is not None:
+#         go_around(tree.mid_right)
+#
+#
+# a = TreeNode(data=1)
+#
+# a.right = TreeNode(data=3)
+# a.left = TreeNode(data=2)
+#
+# a.mid_left = TreeNode(data=10)
+# a.mid_right = TreeNode(data=11)
+#
+# a.left.right = TreeNode(data=6)
+# a.left.left = TreeNode(data=7)
+#
+# a.left.mid_left = TreeNode(data=12)
+# a.left.mid_right = TreeNode(data=13)
+#
+# a.right.right = TreeNode(data=4)
+# a.right.left = TreeNode(data=5)
+#
+# a.right.mid_left = TreeNode(data=14)
+# a.right.mid_right = TreeNode(data=15)
+#
+# a.left.right.left = TreeNode(data=8)
+# a.right.left.right = TreeNode(data=9)
+#
+# go_around(a)
+
+
+def factorial1(n):
+    fact = 1
+    for i in range(1, n+1):
+        fact *= i
+    return fact
+
+
+def factorial2(size):
+    if size <= 1:
+        return 1
     else:
-        return "High"
+        return size * factorial2(size-1)
+
+
+def is_odd1(n):
+    if n % 2 == 0:
+        return True
+    else:
+        return False
+
+
+def is_odd2(n):
+    if n == 1:
+        return False
+    elif n == 2:
+        return True
+
+    return is_odd2(n-2)
+
+
+def convert_binary(n):
+    if n == 1:
+        return str(n)
+    else:
+        return str(n % 2) + convert_binary(n//2)
+
+
+def sum_of_lst(lst):
+    tmp_sum = 0
+    for i in lst:
+        if isinstance(i, list):
+            tmp_sum += sum_of_lst(i)
+        elif isinstance(i, int):
+            tmp_sum += i
+        else:
+            raise TypeError("Введен не тот тип данных!")
+
+    return tmp_sum
+
+
+# a = [
+#     [1, [2, 3, 4], [5, 7]],
+#     [1, 6.7],
+#     [4],
+#     4,
+#     [11, 67, [5]], 8, 9
+# ]
+#
+# print(sum_of_lst(a))
 
 
 
-print(my_func(d=4, e=5, f=7, a=-1, b=2.0, c=3))
+
+def bifshteks(n, k):
+    if isinstance(n, int) and isinstance(k, int):
+        if 1 <= n <= 100 and 1 <= k <= 100:
+            return n*k*2
+        else:
+            raise ValueError("Вышли за интервал!")
+    else:
+        raise TypeError("Введены не те типы данных!")
+
+
+def my_sum(n):
+    if isinstance(n, int):
+        if -10000 <= n <= 10000:
+            s = 0
+            if n > 1:
+                for i in range(1, n+1):
+                    s += i
+            elif n == 1:
+                return 1
+            else:
+                for i in range(n, 2):
+                    s += i
+            return s
+        else:
+            raise ValueError("Вышли за интервал!")
+    else:
+        raise TypeError("Введен не тот тип данных!")
+
+#
+# print(my_sum(-3))
+
+
+# lst = ['белое вино', 'салат Цезарь', 'паста Карбонара', 'чизкейк', 'шоколадный сорбет']
+#
+# a = input()
+# b = input()
+#
+# if a in lst:
+#     lst[lst.index(a)] = b
+#     print(lst)
+# else:
+#     print("Введенное не существует!")
+
+# def menu_changer(menu: list):
+#     menu_dict = dict()
+#     for i in menu:
+#         menu_dict[i] = i
+#     q = str(input("Change menu?  "))
+#     if q == "Yes" or "yes":
+#         itr = str(input("Type item to replace:"))
+#         ni = str(input("Type new item:"))
+#         menu_dict[itr] = ni
+#         menu.clear()
+#         for i in menu_dict:
+#             menu.append(menu_dict[i])
+#         return menu
+#     else:
+#         return "Menu remained unchanged"
+#
+#
+# print(menu_changer(['красное вино', 'салат Цезарь', 'паста Карбонара', 'чизкейк', 'шоколадный сорбет']))
+
+#
+# diary = {
+#     'понедельник': {
+#                           'утро': ['погулять с собакой'],
+#                           'день': [],
+#                           'вечер': ['погулять с собакой']
+#                                       },
+#     'вторник': {
+#                       'утро': ['погулять с собакой'],
+#                       'день': [],
+#                       'вечер': ['погулять с собакой']
+#                                   },
+#     'среда': {
+#                       'утро': ['погулять с собакой'],
+#                       'день': [],
+#                       'вечер': ['погулять с собакой']
+#                                   },
+#     'четверг': {
+#                       'утро': ['погулять с собакой'],
+#                       'день': [],
+#                       'вечер': ['погулять с собакой']
+#                                   },
+#     'пятница': {
+#                       'утро': ['заехать в шиномонтаж', 'помыть машину'],
+#                       'день': [],
+#                       'вечер': ['поход в театр',  'ужин в кафе']
+#                                   },
+#     'суббота': {
+#                       'утро': [],
+#                       'день': [],
+#                       'вечер': []
+#                                   },
+#     'воскресенье': {
+#                       'утро': [],
+#                       'день': [],
+#                       'вечер': []
+#                                   }
+# }
+#
+# diary['среда']['утро'].pop(0)
+# diary['среда']['вечер'].pop(0)
+# diary['среда']['утро'].pop(0)
+# diary['среда']['вечер'].pop(0)
+# # t = ('суббота', 'воскресенье')
+# # del diary['суббота']
+# # del diary['воскресенье']
+# # diary[t] = ['посадить цветы на даче']
+# #
+# #
+# # diary['вторник']['утро'].append('поход к зубному')
+# # print(diary)
+#
+# def first(d1, d2):
+#     new_dict = d1.copy()
+#     for i in d2:
+#         if i in new_dict:
+#             new_dict[i] = min(new_dict[i], d2[i])
+#         else:
+#             new_dict[i] = d2[i]
+#
+#     return new_dict
+# #
+# #
+# # a = {
+# #     "1": 4,
+# #     "5": 1,
+# #     "2": 5
+# # }
+# #
+# # b = {
+# #     "3": 1,
+# #     "5": 6,
+# #     "2": 2,
+# #     "7": 10
+# # }
+# #
+# # print(first(a, b))
+#
+#
+# # users = {"Tom", "Bob", "Alice", "Tom", "Alice"}
+# # u2 = {'Alice', 'Tom', 'Bob'}
+# # print(users)
+# # users.add("Tom")
+# # print(users)
+# #
+# # user = "Tim"
+# # users.discard("wrgfwgf4w")
+#
+#
+# # users1 = {"Tom", "Bob", "Alice"}
+# # users2 = {"Sam", "Kate", "Bob"}
+# #
+# # print(users1 | users2)
+# # print(users1 & users2)
+#
+#
+#
+#
+# def my_func(a, b):
+#     res = (
+#         a+b,
+#         a-b,
+#         a*b,
+#         a/b,
+#         a//b,
+#         a%b,
+#         a**b,
+#
+#         a > b,
+#         a < b,
+#         a >= b,
+#         a <= b,
+#         a != b,
+#         a == b
+#     )
+#     return res
+#
+# print(my_func(33, 23))
+#
+#
+#
+
+
+#file = open("D:/images/ytdtrde.txt", "a")
+
+lst = []
+import math
+
+# with open("in2.txt", "w") as file1:
+#     file1.write("")
+#
+# with open("myfile.txt", "r") as file:
+#     for i in file:
+#         try:
+#             a = float(i)
+#             if a < 0:
+#                 with open("in2.txt", "a") as file1:
+#                     file1.write(str(a) + "\n")
+#         except Exception as ex:
+#             print(ex)
+
+
+# n = int(input())
+#
+# while n > 1:
+#     for i in range(2, n+1):
+#         if n % i == 0:
+#             print(i)
+#             n //= i
+
+# n = int(input())
+#
+# n += 1
+# while True:
+#     is_simple = False
+#     for i in range(2, n):
+#         if n % i == 0:
+#             is_simple = False
+#             break
+#         is_simple = True
+#
+#     if is_simple:
+#         print(n)
+#         break
+#     else:
+#         n += 1
+
+
+m = 60
+N = int(input())
+percent = int(input())
+
+N += N*percent/100
+c = N*0.2
+N -= N*0.2
+print(c)
+print(N/m)
+
+
+import datetime
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
